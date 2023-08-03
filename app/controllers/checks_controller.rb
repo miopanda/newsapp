@@ -12,4 +12,8 @@ class ChecksController < ApplicationController
   def set_article
     @article = Article.find(params[:id])
   end
+
+  def revert_check
+    Check.find_by(user_id: current_user.id, article_id: @article.id).destroy
+  end
 end
